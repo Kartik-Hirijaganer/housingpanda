@@ -1,0 +1,21 @@
+<div *ngIf="listings.length === 0" class="text-center text-muted">
+  No listings available.
+</div>
+<a [routerLink]="['/add-listing']" class="btn btn-success btn-lg px-5 py-3">
+  Add a New Listing
+</a>
+<div class="row" *ngIf="listings.length > 0">
+  <div *ngFor="let listing of listings" class="col-md-4 mb-4">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h5 class="card-title">{{ listing.Title }}</h5>
+        <h6 class="card-subtitle mb-2 text-muted">
+          ${{ listing.Rent }} • {{ listing.NumRooms }} Rooms
+        </h6>
+        <p class="card-text">{{ listing.Description }}</p>
+        <p><strong>Address:</strong> {{ listing.Address }}</p>
+        <p><strong>Contact:</strong> {{ listing.ContactInfo }}</p>
+      </div>
+    </div>
+  </div>
+</div>

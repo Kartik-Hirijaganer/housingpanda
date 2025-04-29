@@ -1,0 +1,66 @@
+<div class="container py-5">
+  <h3 class="mb-4 text-center text-primary">Add New Listing</h3>
+
+  <form (ngSubmit)="onSubmit()" #listingForm="ngForm" class="needs-validation" novalidate>
+
+    <div class="mb-3">
+      <label class="form-label">Title</label>
+      <input type="text" class="form-control" name="title" [(ngModel)]="listing.title" #title="ngModel" required
+        [ngClass]="{ 'is-invalid': title.invalid && (title.touched || title.dirty) }" />
+      <div *ngIf="title.invalid && (title.touched || title.dirty)" class="text-danger mt-1">
+        Title is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Description</label>
+      <textarea class="form-control" name="description" rows="3" [(ngModel)]="listing.description"
+        #description="ngModel" required
+        [ngClass]="{ 'is-invalid': description.invalid && (description.touched || description.dirty) }"></textarea>
+      <div *ngIf="description.invalid && (description.touched || description.dirty)" class="text-danger mt-1">
+        Description is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Rent</label>
+      <input type="number" class="form-control" name="rent" step="0.01" [(ngModel)]="listing.rent" #rent="ngModel"
+        required [ngClass]="{ 'is-invalid': rent.invalid && (rent.touched || rent.dirty) }" />
+      <div *ngIf="rent.invalid && (rent.touched || rent.dirty)" class="text-danger mt-1">
+        Rent is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Address</label>
+      <input type="text" class="form-control" name="address" [(ngModel)]="listing.address" #address="ngModel" required
+        [ngClass]="{ 'is-invalid': address.invalid && (address.touched || address.dirty) }" />
+      <div *ngIf="address.invalid && (address.touched || address.dirty)" class="text-danger mt-1">
+        Address is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Number of Rooms</label>
+      <input type="number" class="form-control" name="numRooms" [(ngModel)]="listing.numRooms" #numRooms="ngModel"
+        required [ngClass]="{ 'is-invalid': numRooms.invalid && (numRooms.touched || numRooms.dirty) }" />
+      <div *ngIf="numRooms.invalid && (numRooms.touched || numRooms.dirty)" class="text-danger mt-1">
+        Number of Rooms is required.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Contact Info</label>
+      <input type="text" class="form-control" name="contactInfo" [(ngModel)]="listing.contactInfo"
+        #contactInfo="ngModel" required
+        [ngClass]="{ 'is-invalid': contactInfo.invalid && (contactInfo.touched || contactInfo.dirty) }" />
+      <div *ngIf="contactInfo.invalid && (contactInfo.touched || contactInfo.dirty)" class="text-danger mt-1">
+        Contact Info is required.
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!listingForm.form.valid">
+      Submit Listing
+    </button>
+
+  </form>
+</div>
